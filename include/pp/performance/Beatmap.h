@@ -19,6 +19,7 @@ public:
 		Speed,
 		OD,
 		AR,
+		CS,
 		MaxCombo,
 		Strain,
 		HitWindow300,
