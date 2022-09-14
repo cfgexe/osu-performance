@@ -123,6 +123,7 @@ void OsuScore::computeAimValue(const Beatmap &beatmap)
 	_aimValue *= getComboScalingFactor(beatmap);
 
 	f32 approachRate = beatmap.DifficultyAttribute(_mods, Beatmap::AR);
+	f32 circleSize = beatmap.DifficultyAttribute(_mods, Beatmap::AR);
 	f32 approachRateFactor = 0.0f;
 	if (approachRate > 10.33f)
 		approachRateFactor = 0.3f * (approachRate - 10.33f);
@@ -134,6 +135,8 @@ void OsuScore::computeAimValue(const Beatmap &beatmap)
 	// We want to give more reward for lower AR when it comes to aim and HD. This nerfs high AR and buffs lower AR.
 	if ((_mods & EMods::Hidden) > 0)
 		_aimValue *= 1.0f + 0.04f * (12.0f - approachRate);
+	if ((_mods & EMods::HardRock) > 0)
+		_aimValue *= 0.5f + 0.02f * (6.0f - circleSize);
 
 	// We assume 15% of sliders in a map are difficult since there's no way to tell from the performance calculator.
 	f32 estimateDifficultSliders = beatmap.NumSliders() * 0.15f;
