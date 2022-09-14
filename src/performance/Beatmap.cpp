@@ -8,6 +8,7 @@ const std::unordered_map<std::string, Beatmap::EDifficultyAttributeType> Beatmap
 	{"Speed", Speed},
 	{"OD", OD},
 	{"AR", AR},
+	{"CS", CS},
 	{"Max combo", MaxCombo},
 	{"Strain", Strain},
 	{"Hit window 300", HitWindow300},
